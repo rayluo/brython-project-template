@@ -10,6 +10,12 @@ when starting a new [Brython](https://brython.info)-powered project.
   (Note to Developer: The loading animation does *not* represent the real progress.
   If your website stuck with the loading animation,
   open the browser console to check for error messages.)
+* Although not a Brython-relevant feature,
+  this template includes a github workflow to deploy your each push to Github Pages
+  (After the first deployment which prepares your website into the default `gh-pages` branch,
+  you need a one-time effort to
+  [enable Github Pages](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+   for your github repo.)
 * The index.html references bootstrap and Brython from their CDN;
   You can easily switch to use the not-yet-released latest Brython source from github;
   An optional browser-console simulator, useful if you are browsing from Android device.
