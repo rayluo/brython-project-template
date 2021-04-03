@@ -29,8 +29,10 @@ when starting a new [Brython](https://brython.info)-powered project.
 
 You can use this repo as a template to start your own project.
 
-1. [One click to use this repo as a template to start your project on github](https://github.com/rayluo/brython-project-template/generate),
-   or manually clone or download this repo as your starting point.
+1. Your options are:
+   * [use this repo as a template to start your project on github](https://github.com/rayluo/brython-project-template/generate),
+   * or manually clone [this project](https://github.com/rayluo/brython-project-template)
+   * or [download its zip package](https://github.com/rayluo/brython-project-template/archive/refs/heads/main.zip)
 2. Run `python3 -m http.server` to start a web server,
    and then visit `http://localhost:8000` to see it in action.
 
