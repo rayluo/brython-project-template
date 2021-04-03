@@ -61,10 +61,12 @@
 -->
 
 <script type="text/javascript">console.log("Loading brython...")</script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython.min.js"></script>
 
-<script type="text/javascript">document.getElementById("psychology").innerHTML = "Loading Standard Libraries..."</script>
+<script type="text/javascript">
+  console.log("Loading brython_stdlib...");
+  document.getElementById("psychology").innerHTML = "Loading Standard Libraries...";
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython_stdlib.min.js"></script>
 <!-- Use the following two to replace the above CDN, if you want to use not-yet-released Brython code base -->
 <!--

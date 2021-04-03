@@ -1,9 +1,9 @@
-# This script is developed based on Brython https://brython.info
 from browser import document, bind
-from string import capwords as say
+# Note: If you could avoid unnecessary import, your script will save several seconds loading time
+# For example, use `"message".title()` instead of `import string; string.capwords("message")`
 
 @bind("#say", "click")
 def echo(event):
     message = document["message"].value
-    document["output"].text = say(message)
+    document["output"].text = message.title()
 
