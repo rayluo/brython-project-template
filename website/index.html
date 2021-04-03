@@ -10,7 +10,9 @@
     <title>My Cool Brython Project</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
-  <body onload="brython()" class="container">
+  <body id="body" onload="brython()" class="container" style="cursor: wait">
+  <!-- The loading animation below could still freeze during loading,
+       so we also use a waiting cursor, whose animation would always work. -->
     <div id="loading"><!-- If combined with its child div, the hiding won't work -->
       <div class="d-flex justify-content-center"><!-- Learned from https://getbootstrap.com/docs/4.0/utilities/flex/ -->
       <!-- The very first time loading tends to be longer,
@@ -31,6 +33,10 @@
 </g>
 </svg></div>
 
+      </div>
+      <div class="d-flex justify-content-center" id="psychology">
+        <!-- https://www.psychologyofgames.com/2019/10/loading-when-were-willing-to-wait/ -->
+        Loading System...
       </div>
     </div>
 
@@ -57,6 +63,8 @@
 <script type="text/javascript">console.log("Loading brython...")</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython.min.js"></script>
+
+<script type="text/javascript">document.getElementById("psychology").innerHTML = "Loading Standard Libraries..."</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython_stdlib.min.js"></script>
 <!-- Use the following two to replace the above CDN, if you want to use not-yet-released Brython code base -->
 <!--
@@ -65,6 +73,8 @@
 -->
     <script type="text/python">
       print("Loading main python program...")
+      from browser import document
+      document["psychology"].text = "Loading Main Program..."
     </script>
 
     <!-- Your main logic should go into here -->
@@ -75,6 +85,7 @@
       print("Ready to use")
       document["loading"].style.display = "none"
       document["main"].style.display = ""
+      document["body"].style.cursor = "default"
     </script>
 
   </body>
