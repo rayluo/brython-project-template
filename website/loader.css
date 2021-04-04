@@ -10,7 +10,6 @@ div#loading {
   display: flex;
   justify-content: center; /*centers items on the line (the x-axis by default)*/
   align-items: center; /*centers items on the cross-axis (y by default)*/
-  background-color: #c4c4c4;
   cursor: wait
 }
 
@@ -29,39 +28,9 @@ div#psychology {
     animation-timing-function: linear;
 }
 
-.gradientout {
-     animation: gradientout 1s;
-     animation-timing-function: linear;
-}
-
-@keyframes gradientout {
-  from { background-color: #c4c4c4; }
-  to { background-color: #ffffff; }
-}
 
 
 @keyframes pulse {
   from {opacity:0.1 }
   to {opacity:1}
 }
-
-.fadein {
-     animation: fadein 1.4s;
-}
-
-.growout {
-     animation: growout 1s;
-     animation-timing-function: linear;
-}
-
-
-@keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes growout {
-  from { opacity: 1; transform:scale(1.0);}
-  to   { opacity: 0; transform:scale(2.0);}
-}
-

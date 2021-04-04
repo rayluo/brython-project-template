@@ -28,9 +28,13 @@ function start_loader(message) {
 
    loader.appendChild(psychology);
    document.body.appendChild(loader);
+
+   console.log(message)
+
 }
 
 
 function update_loader_message(message) {
     document.getElementById('loading_message').innerHTML = message;
+    console.log(message)
 }
