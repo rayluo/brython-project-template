@@ -1,6 +1,57 @@
-// Loader creates loading html and injects it into the page
+// Loader creates loading html and associated CSS and injects it into the page
+
+function inject_css() {
+
+    console.log("Injecting loader CSS into page")
+
+
+    // This CSS left unminified so you can change the animation if you want to.
+    const css = [
+'div#brython_template_loading_animation {',
+'  overflow: hidden;',
+'  position: absolute;',
+'  left:0;',
+'  top:0;',
+'  width: 100%;',
+'  height: 100%;',
+'  background-color: whitesmoke;',
+'  z-index:99;',
+'  display: flex;',
+'  justify-content: center;',
+'  align-items: center;',
+'  cursor: wait',
+'}',
+'',
+'div#psychology {',
+'    border-radius: 20px;',
+'    border:4px solid;',
+'    padding:20px;',
+'    min-width:40%;',
+'    font-size:2em;',
+'    color: black;',
+'}',
+'',
+'.pulsing {',
+'    animation: pulse 2s infinite;',
+'    animation-direction: alternate;',
+'    animation-timing-function: linear;',
+'}',
+'',
+'@keyframes pulse {',
+'  from {opacity:0.1 }',
+'  to {opacity:1}',
+'}'
+    ]
+
+    document.head.insertAdjacentHTML("beforeend", '<style id="brython_template_loading_animation_css">' + css.join('\n') + '</style>')
+}
 
 function start_loader(message) {
+
+   // Inject stylesheet for loader
+   inject_css();
+
+   // Build the loader html
    const loader = document.createElement("div");
     Object.assign(loader, {
       id: 'brython_template_loading_animation'
@@ -38,3 +89,13 @@ function update_loader_message(message) {
     document.getElementById('loading_message').innerHTML = message;
     console.log(message)
 }
+
+// Add event listener to run 1x when brython is all done to remove our blocker and its css style tag.
+document.addEventListener("brython_done", function (e) {
+    console.log("Started loader clean up")
+    var loader = document.getElementById("brython_template_loading_animation")
+    var style = document.getElementById('brython_template_loading_animation_css')
+    loader.parentNode.removeChild(loader);
+    style.parentNode.removeChild(style);
+    console.log("Finished loader clean up")
+}, { once: true });
