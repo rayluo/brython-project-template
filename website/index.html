@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,38 +8,15 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS Specific to our loader animations -->
+    <link rel="stylesheet" href="loader.css" />
+
     <title>My Cool Brython Project</title>
-    <!-- <link href="style.css" rel="stylesheet" type="text/css" /> -->
   </head>
-  <body id="body" onload="brython()" class="container" style="cursor: wait">
-  <!-- The loading animation below could still freeze during loading,
-       so we also use a waiting cursor, whose animation would always work. -->
-    <div id="loading"><!-- If combined with its child div, the hiding won't work -->
-      <div class="d-flex justify-content-center"><!-- Learned from https://getbootstrap.com/docs/4.0/utilities/flex/ -->
-      <!-- The very first time loading tends to be longer,
-           so we use a language-agnostic loading picture here. -->
-
-<!-- Free loading image from https://loading.io/ -->
-<div class="inner" style="width: 200px; height: 200px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#fff;display:block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-<g transform="translate(50 50)">
-  <g transform="scale(0.8)">
-    <g transform="translate(-50 -50)">
-      <g>
-        <animateTransform attributeName="transform" type="translate" repeatCount="indefinite" dur="1s" values="-20 -20;20 -20;0 20;-20 -20" keyTimes="0;0.33;0.66;1"></animateTransform>
-        <path fill="#46dff0" d="M44.19 26.158c-4.817 0-9.345 1.876-12.751 5.282c-3.406 3.406-5.282 7.934-5.282 12.751 c0 4.817 1.876 9.345 5.282 12.751c3.406 3.406 7.934 5.282 12.751 5.282s9.345-1.876 12.751-5.282 c3.406-3.406 5.282-7.934 5.282-12.751c0-4.817-1.876-9.345-5.282-12.751C53.536 28.033 49.007 26.158 44.19 26.158z"></path>
-        <path fill="#e90c59" d="M78.712 72.492L67.593 61.373l-3.475-3.475c1.621-2.352 2.779-4.926 3.475-7.596c1.044-4.008 1.044-8.23 0-12.238 c-1.048-4.022-3.146-7.827-6.297-10.979C56.572 22.362 50.381 20 44.19 20C38 20 31.809 22.362 27.085 27.085 c-9.447 9.447-9.447 24.763 0 34.21C31.809 66.019 38 68.381 44.19 68.381c4.798 0 9.593-1.425 13.708-4.262l9.695 9.695 l4.899 4.899C73.351 79.571 74.476 80 75.602 80s2.251-0.429 3.11-1.288C80.429 76.994 80.429 74.209 78.712 72.492z M56.942 56.942 c-3.406 3.406-7.934 5.282-12.751 5.282s-9.345-1.876-12.751-5.282c-3.406-3.406-5.282-7.934-5.282-12.751 c0-4.817 1.876-9.345 5.282-12.751c3.406-3.406 7.934-5.282 12.751-5.282c4.817 0 9.345 1.876 12.751 5.282 c3.406 3.406 5.282 7.934 5.282 12.751C62.223 49.007 60.347 53.536 56.942 56.942z"></path>
-      </g>
-    </g>
-  </g>
-</g>
-</svg></div>
-
-      </div>
-      <div class="d-flex justify-content-center" id="psychology">
-        <!-- https://www.psychologyofgames.com/2019/10/loading-when-were-willing-to-wait/ -->
-        Loading System...
-      </div>
-    </div>
+  <body id="body" onload="brython()" class="container">
 
     <div id="main" style="display:none">
       <!-- The real project content starts from here -->
@@ -60,35 +38,55 @@
 <script type="text/javascript">if (!mobileConsole.status.initialized) {mobileConsole.init();}</script>
 -->
 
-<script type="text/javascript">console.log("Loading brython...")</script>
+<!-- It is important to remember that all text/python scripts are loaded and run in order AFTER all the javascript
+     scripts. You cannot interleave python/javascript scripts and expect them to run in order.
+-->
+
+<!-- Load the javascript loader functions -->
+<script src="loader.js"></script>
+<script type="text/javascript">
+  start_loader("Loading System...")
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython.min.js"></script>
 
 <script type="text/javascript">
-  console.log("Loading brython_stdlib...");
-  document.getElementById("psychology").innerHTML = "Loading Standard Libraries...";
+  update_loader_message("Loading Standard Library...")
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython_stdlib.min.js"></script>
 <!-- Use the following two to replace the above CDN, if you want to use not-yet-released Brython code base -->
-<!--
-<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython.js"></script>
-<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython_stdlib.js"></script>
--->
-    <script type="text/python">
-      print("Loading main python program...")
-      from browser import document
-      document["psychology"].text = "Loading Main Program..."
+<!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython.js"></script>-->
+<!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython_stdlib.js"></script>-->
+
+<!-- On the first run, the parsing of your main.py code below could take a few seconds. The user will
+     see whatever loader message is on the page when this process begins. On subsequent runs this code will
+     have been cached and the modules it uses will already have been transpiled. It will go fast and any message
+     you change will flash quickly.
+ -->
+
+    <script type="text/javascript">
+      update_loader_message("Loading Program Code....")
     </script>
 
-    <!-- Your main logic should go into here -->
+    <!--
+        Your main logic should go into main.py. Parsing this code may cause a delay but the css animations
+        should continue to run
+     -->
     <script type="text/python" src="main.py"></script>
 
+    <!-- call the end loader to clean up, with your own message -->
     <script type="text/python">
-      from browser import document
-      print("Ready to use")
-      document["loading"].style.display = "none"
-      document["main"].style.display = ""
-      document["body"].style.cursor = "default"
+        # We're done, remove the loader html
+        from browser import document
+        try:
+            del document["brython_template_loading_animation"]
+        except KeyError:  # This happens when you removed the loader.js but forgot to remove this ending logic
+            pass
+
+        # Make our content visible
+        document["main"].style.display = ""
+
     </script>
+
 
   </body>
 </html>
