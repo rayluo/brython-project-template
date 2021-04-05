@@ -3,7 +3,7 @@
 function start_loader(message) {
    const loader = document.createElement("div");
     Object.assign(loader, {
-      id: 'loading'
+      id: 'brython_template_loading_animation'
     })
 
     const psychology = document.createElement("div");

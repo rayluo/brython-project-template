@@ -77,7 +77,10 @@
     <script type="text/python">
         # We're done, remove the loader html
         from browser import document
-        del document["loading"]
+        try:
+            del document["brython_template_loading_animation"]
+        except KeyError:  # This happens when you removed the loader.js but forgot to remove this ending logic
+            pass
 
         # Make our content visible
         document["main"].style.display = ""

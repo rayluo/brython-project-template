@@ -1,6 +1,6 @@
 /* CSS for brython bootstrapping loading animations */
 
-div#loading {
+div#brython_template_loading_animation {
   overflow: hidden;
   position: absolute;
   left:0;
