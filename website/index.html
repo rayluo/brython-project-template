@@ -15,7 +15,6 @@
   </head>
   <body id="body" onload="brython()" class="container">
 
-    <div id="main">
       <!-- The real project content starts from here -->
       <h2>Echo</h2>
       <p>Written in Python, hosted as a frontend static web page, powered by Brython.</p>
@@ -26,8 +25,14 @@
       <pre id="output">
       </pre>
       <a href="https://github.com/rayluo/brython-project-template"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:100;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-      <!-- The real project content ends from here -->
-    </div>
+      <!--
+        Your main logic should go into main.py.
+        Parsing this code may cause a delay but the css animations
+        should continue to run
+      -->
+      <script type="text/python" src="main.py"></script>
+
+      <!-- The real project content ends here -->
 
 
 <!-- This part is only needed when debugging in raw Android browser.
@@ -39,7 +44,11 @@
      scripts. You cannot interleave python/javascript scripts and expect them to run in order.
 -->
 
-<!-- Load the javascript loader functions -->
+<!-- Load the javascript loader functions.
+     When brython is done initializing everything,
+     it emits a signal "brython_done" that a handler in loader.js
+     captures and removes the loading blocker.
+ -->
 <script src="loader.js"></script>
 <script type="text/javascript">
   start_loader("Loading System...")
@@ -64,16 +73,6 @@
       update_loader_message("Loading Program Code....")
     </script>
 
-    <!--
-        Your main logic should go into main.py. Parsing this code may cause a delay but the css animations
-        should continue to run
-     -->
-    <script type="text/python" src="main.py"></script>
-
-    <!--
-         When brython is done initializing everything it emits a signal "brython_done" that a handler in loader.js
-         captures and removes the loading blocker.
-     -->
   </body>
 </html>
 
