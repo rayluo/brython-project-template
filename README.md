@@ -45,9 +45,9 @@ and content inside `main.py`.
 Alternatively, if you already have an existing project,
 you can add the loading animation by including this snippet into your `index.html`
 
-    ```html
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="https://rayluo.github.io/brython-project-template/loader.js"></script>
-    <script type="text/javascript">start_loader("Loading System...")</script>
-    ```
+<script src="https://rayluo.github.io/brython-project-template/loader.js"></script>
+<script type="text/javascript">start_loader("Loading System...")</script>
+```
