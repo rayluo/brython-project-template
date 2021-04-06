@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,17 +7,13 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <!-- Fontawesome CSS -->
+    <!-- Fontawesome CSS required by the loader -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- CSS Specific to our loader animations -->
-    <link rel="stylesheet" href="loader.css" />
 
     <title>My Cool Brython Project</title>
   </head>
   <body id="body" onload="brython()" class="container">
 
-    <div id="main" style="display:none">
       <!-- The real project content starts from here -->
       <h2>Echo</h2>
       <p>Written in Python, hosted as a frontend static web page, powered by Brython.</p>
@@ -29,24 +24,32 @@
       <pre id="output">
       </pre>
       <a href="https://github.com/rayluo/brython-project-template"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:100;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-      <!-- The real project content ends from here -->
-    </div>
+      <!--
+        Your main logic should go into main.py.
+        Parsing this code may cause a delay but the css animations from load.js
+        should continue to run.
 
+        It is important to remember that all text/python scripts are loaded and run
+        in order AFTER all the javascript scripts.
+        You cannot interleave python/javascript scripts and expect them to run in order.
+      -->
+      <script type="text/python" src="main.py"></script>
 
+      <!-- The real project content ends here -->
+
+<!-- Boilerplate code starts from here -->
 <!-- This part is only needed when debugging in raw Android browser.
 <script src="https://code.hnldesign.nl/hnl.mobileConsole.1.3.js"></script>
 <script type="text/javascript">if (!mobileConsole.status.initialized) {mobileConsole.init();}</script>
 -->
 
-<!-- It is important to remember that all text/python scripts are loaded and run in order AFTER all the javascript
-     scripts. You cannot interleave python/javascript scripts and expect them to run in order.
--->
-
-<!-- Load the javascript loader functions -->
+<!-- Load the javascript loader functions.
+     When brython is done initializing everything,
+     it emits a signal "brython_done" that a handler in loader.js
+     captures and removes the loading blocker.
+ -->
 <script src="loader.js"></script>
-<script type="text/javascript">
-  start_loader("Loading System...")
-</script>
+<script type="text/javascript">start_loader("Loading System...")</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython.min.js"></script>
 
 <script type="text/javascript">
@@ -57,36 +60,14 @@
 <!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython.js"></script>-->
 <!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython_stdlib.js"></script>-->
 
-<!-- On the first run, the parsing of your main.py code below could take a few seconds. The user will
-     see whatever loader message is on the page when this process begins. On subsequent runs this code will
-     have been cached and the modules it uses will already have been transpiled. It will go fast and any message
-     you change will flash quickly.
- -->
-
-    <script type="text/javascript">
-      update_loader_message("Loading Program Code....")
-    </script>
-
-    <!--
-        Your main logic should go into main.py. Parsing this code may cause a delay but the css animations
-        should continue to run
-     -->
-    <script type="text/python" src="main.py"></script>
-
-    <!-- call the end loader to clean up, with your own message -->
-    <script type="text/python">
-        # We're done, remove the loader html
-        from browser import document
-        try:
-            del document["brython_template_loading_animation"]
-        except KeyError:  # This happens when you removed the loader.js but forgot to remove this ending logic
-            pass
-
-        # Make our content visible
-        document["main"].style.display = ""
-
-    </script>
-
+<!--
+On the first run, the parsing of your main.py code could take a few seconds.
+The user will see whatever loader message is on the page when this process begins.
+On subsequent runs, the modules it uses will already have been transpiled.
+It will go fast and any message you change will flash quickly.
+-->
+<script type="text/javascript">update_loader_message("Loading Program Code....")</script>
+<!-- Boilerplate code starts from here -->
 
   </body>
 </html>

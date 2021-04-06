@@ -37,7 +37,17 @@ You can use this repo as a template to start your own project.
    and then visit `http://localhost:8000` to see it in action.
 
 That is all. Once you are familiar with this project's structure,
-you can modify it by changing
-the content inside `<div id="main" ...>...</div>` from `index.html`
+you can modify it by changing the content between
+`<!-- The real project content starts from here -->` and `<!-- The real project content ends here -->`
+in `index.html`,
 and content inside `main.py`.
 
+Alternatively, if you already have an existing project,
+you can add the loading animation by including this snippet into your `index.html`
+
+    ```html
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://rayluo.github.io/brython-project-template/loader.js"></script>
+    <script type="text/javascript">start_loader("Loading System...")</script>
+    ```
