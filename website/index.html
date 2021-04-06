@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,21 +26,21 @@
       <a href="https://github.com/rayluo/brython-project-template"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:100;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
       <!--
         Your main logic should go into main.py.
-        Parsing this code may cause a delay but the css animations
-        should continue to run
+        Parsing this code may cause a delay but the css animations from load.js
+        should continue to run.
+
+        It is important to remember that all text/python scripts are loaded and run
+        in order AFTER all the javascript scripts.
+        You cannot interleave python/javascript scripts and expect them to run in order.
       -->
       <script type="text/python" src="main.py"></script>
 
       <!-- The real project content ends here -->
 
-
+<!-- Boilerplate code starts from here -->
 <!-- This part is only needed when debugging in raw Android browser.
 <script src="https://code.hnldesign.nl/hnl.mobileConsole.1.3.js"></script>
 <script type="text/javascript">if (!mobileConsole.status.initialized) {mobileConsole.init();}</script>
--->
-
-<!-- It is important to remember that all text/python scripts are loaded and run in order AFTER all the javascript
-     scripts. You cannot interleave python/javascript scripts and expect them to run in order.
 -->
 
 <!-- Load the javascript loader functions.
@@ -50,9 +49,7 @@
      captures and removes the loading blocker.
  -->
 <script src="loader.js"></script>
-<script type="text/javascript">
-  start_loader("Loading System...")
-</script>
+<script type="text/javascript">start_loader("Loading System...")</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.1/brython.min.js"></script>
 
 <script type="text/javascript">
@@ -63,15 +60,14 @@
 <!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython.js"></script>-->
 <!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython_stdlib.js"></script>-->
 
-<!-- On the first run, the parsing of your main.py code below could take a few seconds. The user will
-     see whatever loader message is on the page when this process begins. On subsequent runs this code will
-     have been cached and the modules it uses will already have been transpiled. It will go fast and any message
-     you change will flash quickly.
- -->
-
-    <script type="text/javascript">
-      update_loader_message("Loading Program Code....")
-    </script>
+<!--
+On the first run, the parsing of your main.py code could take a few seconds.
+The user will see whatever loader message is on the page when this process begins.
+On subsequent runs, the modules it uses will already have been transpiled.
+It will go fast and any message you change will flash quickly.
+-->
+<script type="text/javascript">update_loader_message("Loading Program Code....")</script>
+<!-- Boilerplate code starts from here -->
 
   </body>
 </html>
