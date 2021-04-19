@@ -16,6 +16,7 @@ function inject_css() {
 '  height: 100%;',
 '  background-color: whitesmoke;',
 '  z-index:99;',
+'  opacity:0.5;',  /* so that the main UI is still visible and the end user can read instructions etc. during loading */
 '  display: flex;',
 '  justify-content: center;',
 '  align-items: center;',
