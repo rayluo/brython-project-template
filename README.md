@@ -16,9 +16,10 @@ when starting a new [Brython](https://brython.info)-powered project.
   you need a one-time effort to
   [enable Github Pages](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
    for your github repo.)
-* The index.html references bootstrap and Brython from their CDN;
-  You can easily switch to use the not-yet-released latest Brython source from github;
-  An optional browser-console simulator, useful if you are browsing from Android device.
+* The index.html automatically loads latest released version of Brython from CDN.
+  You can easily switch to use the not-yet-released latest Brython source from github.
+* The index.html references bootstrap from CDN for better layout.
+* An optional browser-console simulator, useful if you are browsing from Android device.
   (All these can be easily comment or uncomment from the index.html.)
 * The website root directory is nested inside this project.
   This setup would provide better separation
