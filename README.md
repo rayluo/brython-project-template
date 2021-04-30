@@ -10,6 +10,8 @@ when starting a new [Brython](https://brython.info)-powered project.
   (Note to Developer: The loading animation does *not* represent the real progress.
   If your website stuck with the loading animation,
   open the browser console to check for error messages.)
+* Demonstrate how to declare external package(s) as dependency,
+  rather than vendorize them.
 * Although not a Brython-relevant feature,
   this template includes a github workflow to deploy your each push to Github Pages
   (After the first deployment which prepares your website into the default `gh-pages` branch,
@@ -26,7 +28,7 @@ when starting a new [Brython](https://brython.info)-powered project.
   when you also creates virtual env `.venv` inside your project directory.
   (Otherwise you could hit [a known issue](https://github.com/brython-dev/brython/issues/1603).)
 
-## How to use?
+## How to use this template?
 
 You can use this repo as a template to start your own project.
 
@@ -34,7 +36,9 @@ You can use this repo as a template to start your own project.
    * [use this repo as a template to start your project on github](https://github.com/rayluo/brython-project-template/generate),
    * or manually clone [this project](https://github.com/rayluo/brython-project-template)
    * or [download its zip package](https://github.com/rayluo/brython-project-template/archive/refs/heads/main.zip)
-2. Run `python3 -m http.server` to start a web server,
+2. Run `cd wwwsite; brip install -r brequirements.txt`
+   (If you haven't install brip, please follow its installation instruction first.)
+3. Run `python3 -m http.server` to start a web server,
    and then visit `http://localhost:8000` to see it in action.
 
 That is all. Once you are familiar with this project's structure,

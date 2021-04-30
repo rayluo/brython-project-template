@@ -1,0 +1,4 @@
+# Define external, pure Python package dependency for your Brython project.
+# Only pure python packages can be used inside Brython.
+
+cowpy>=1.1.0,<2

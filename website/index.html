@@ -15,13 +15,34 @@
   <body id="body" onload="brython()" class="container">
 
     <!-- The real project content starts from here -->
-    <h2>Echo</h2>
-    <p>Written in Python, hosted as a frontend static web page, powered by Brython.</p>
+    <h2>Echo - A static web page written in Python, powered by Brython</h2>
     <p>Enter your message here:</p>
     <input type="text" id="message" value="hello world" class="form-control"></input>
-    <input type="button" id="say" value="Say it"></input>
-    <hr></hr>
+    <input type="button" id="say" value="Say it (Click me again and again)"></input>
     <pre id="output"></pre>
+    <hr></hr>
+    <p>Without a doubt, you've seen fancier demos than this in Brython's gallery.</p>
+
+    <p>However, view
+      <a href="https://github.com/rayluo/brython-project-template/tree/main/website" target="_blank">
+      the source code from this template's repo
+      </a>...
+    </p>
+
+    <p>
+    It contains no implementation to those ASCII arts!
+    Instead, you will find a normal dependency declaration file "brequirements.txt",
+    and an `import cowpy` code in our `main.py`.
+    </p>
+
+    <p>
+    This is made possible by a `pip`-like tool named - what else - `brip`.
+    That is to say, you no longer have to vendorize your dependency and pack your entire static website as a PyPI package for deployment.
+    Check out
+    <a href="https://github.com/rayluo/brython-project-template" target="_blank">the README of this project</a>
+    to see how to setup all these.
+    </p>
+
     <a href="https://github.com/rayluo/brython-project-template"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:100;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <!--
       Your main logic could go into a dedicated .py file,
@@ -60,6 +81,8 @@
     <!-- Use the following two to replace the above CDN, if you want to use not-yet-released Brython code base -->
     <!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython.js"></script>-->
     <!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython_stdlib.js"></script>-->
+
+    <script src="site-packages.brython.js"></script>
 
     <!--
     On the first run, the parsing of your python code could take a few seconds.

@@ -12,6 +12,19 @@ jobs:
       - name: Check out
         uses: actions/checkout@v2
 
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Build site-packages.brython.js by brip
+        if: hashFiles('website/brequirements.txt') != ''
+        run: |
+          #python -m pip install brython-brip
+          python -m pip install git+https://github.com/rayluo/brip.git
+          cd website
+          brip install -r brequirements.txt
+
       - name: Publish to GitHub Pages
         uses: rayluo/github-pages-overwriter@v1.1
         with:
