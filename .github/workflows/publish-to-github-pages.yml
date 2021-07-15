@@ -3,7 +3,8 @@ name: Publish to Github Pages (you still need to enable Github Pages for your pr
 on:
   push:
     branches:
-      - '*'
+      - main
+      - dev
 
 jobs:
   publish:
