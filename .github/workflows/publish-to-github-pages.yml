@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Publish to GitHub Pages
-        uses: rayluo/github-pages-overwriter@v1.2
+        uses: rayluo/github-pages-overwriter@v1.3
         with:
           source-directory: website
 
