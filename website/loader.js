@@ -47,7 +47,7 @@ function inject_css() {
     document.head.insertAdjacentHTML("beforeend", '<style id="brython_template_loading_animation_css">' + css.join('\n') + '</style>')
 }
 
-function start_loader(message) {
+(function () {  // Ensure initialization by calling anonymous function
 
    // Inject stylesheet for loader
    inject_css();
@@ -75,15 +75,15 @@ function start_loader(message) {
     Object.assign(loading_message, {
       id: 'loading_message',
     })
-    loading_message.innerHTML = message;
+    loading_message.innerHTML = "...";  // An i18n placeholder
     psychology.appendChild(loading_message);
 
    loader.appendChild(psychology);
    document.body.appendChild(loader);
 
-   console.log(message)
+   console.log("Loader initialized.");
 
-}
+})();
 
 
 function update_loader_message(message) {

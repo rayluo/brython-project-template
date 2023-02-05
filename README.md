@@ -60,6 +60,6 @@ you can add the loading animation by including this snippet into your own `index
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script src="https://rayluo.github.io/brython-project-template/loader.js"></script>
-<script type="text/javascript">start_loader("Loading System...")</script>
+<script type="text/javascript">update_loader_message("Loading System...")</script>
 ```
 </sub>
